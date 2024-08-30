@@ -28,7 +28,7 @@ Before you begin, ensure you have the following prerequisites:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/anshulc55/terraform.git
+   git clone https://github.com/lmunje/terraform.git
    ```
 
 2. Change into the cloned directory:
