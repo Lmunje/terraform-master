@@ -1,5 +1,5 @@
 
-data "aws_availability_zones" "avilable" {}
+data "aws_availability_zones" "available" {}
 
 data "aws_ami" "latest-ubuntu" {
   most_recent = true
