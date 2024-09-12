@@ -1,6 +1,7 @@
 #Define External IP 
 resource "aws_eip" "lionel-nat" {
-  vpc = true
+  # vpc = true
+  domain = "vpc"
 }
 
 resource "aws_nat_gateway" "lionel-nat-gw" {
