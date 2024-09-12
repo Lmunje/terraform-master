@@ -1,7 +1,7 @@
-#Security Group for levelupvpc
-resource "aws_security_group" "allow-levelup-ssh" {
-  vpc_id      = aws_vpc.levelupvpc.id
-  name        = "allow-levelup-ssh"
+#Security Group for lionelvpc
+resource "aws_security_group" "allow-lionel-ssh" {
+  vpc_id      = aws_vpc.lionelvpc.id
+  name        = "allow-lionel-ssh"
   description = "security group that allows ssh connection"
 
   egress {
@@ -19,7 +19,7 @@ resource "aws_security_group" "allow-levelup-ssh" {
   }
   
   tags = {
-    Name = "allow-levelup-ssh"
+    Name = "allow-lionel-ssh"
   }
 }
 
