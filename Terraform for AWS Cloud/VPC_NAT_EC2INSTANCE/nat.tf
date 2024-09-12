@@ -22,17 +22,17 @@ resource "aws_route_table" "lionel-private" {
 }
 
 # route associations private
-resource "aws_route_table_association" "level-private-1-a" {
+resource "aws_route_table_association" "lionel-private-1-a" {
   subnet_id      = aws_subnet.lionelvpc-private-1.id
   route_table_id = aws_route_table.lionel-private.id
 }
 
-resource "aws_route_table_association" "level-private-1-b" {
+resource "aws_route_table_association" "lionel-private-1-b" {
   subnet_id      = aws_subnet.lionelvpc-private-2.id
   route_table_id = aws_route_table.lionel-private.id
 }
 
-resource "aws_route_table_association" "level-private-1-c" {
+resource "aws_route_table_association" "lionel-private-1-c" {
   subnet_id      = aws_subnet.lionelvpc-private-3.id
   route_table_id = aws_route_table.lionel-private.id
 }
