@@ -1,6 +1,6 @@
 
-resource "aws_key_pair" "levelup_key" {
-    key_name = "levelup_key"
+resource "aws_key_pair" "lionel_key" {
+    key_name = "lionel_key"
     public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 
@@ -8,8 +8,8 @@ resource "aws_key_pair" "levelup_key" {
 resource "aws_instance" "MyFirstInstnace" {
   ami           = lookup(var.AMIS, var.AWS_REGION)
   instance_type = "t2.micro"
-  availability_zone = "us-east-2a"
-  key_name      = aws_key_pair.levelup_key.key_name
+  availability_zone = "us-east-1a"
+  key_name      = aws_key_pair.lionel_key.key_name
 
   tags = {
     Name = "custom_instance"
@@ -18,7 +18,7 @@ resource "aws_instance" "MyFirstInstnace" {
 
 #EBS resource Creation
 resource "aws_ebs_volume" "ebs-volume-1" {
-  availability_zone = "us-east-2a"
+  availability_zone = "us-east-1a"
   size              = 50
   type              = "gp2"
 
