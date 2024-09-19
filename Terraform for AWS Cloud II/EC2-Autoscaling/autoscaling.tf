@@ -15,7 +15,7 @@ resource "aws_key_pair" "lionel_key" {
 #Autoscaling Group
 resource "aws_autoscaling_group" "lionel-autoscaling" {
   name                      = "lionel-autoscaling"
-  vpc_zone_identifier       = ["us-east-1b", "us-east-1a"]
+  vpc_zone_identifier       = ["subnet-9e0ad9f5", "subnet-d7a6afad"]
   launch_configuration      = aws_launch_configuration.lionel-launchconfig.name
   min_size                  = 1
   max_size                  = 2
