@@ -1,8 +1,8 @@
 #AWS ELB Configuration
-resource "aws_elb" "levelup-elb" {
-  name            = "levelup-elb"
-  subnets         = [aws_subnet.levelupvpc-public-1.id, aws_subnet.levelupvpc-public-2.id]
-  security_groups = [aws_security_group.levelup-elb-securitygroup.id]
+resource "aws_elb" "lionel-elb" {
+  name            = "lionel-elb"
+  subnets         = [aws_subnet.lionelvpc-public-1.id, aws_subnet.lionelvpc-public-2.id]
+  security_groups = [aws_security_group.lionel-elb-securitygroup.id]
   
   listener {
     instance_port     = 80
@@ -24,14 +24,14 @@ resource "aws_elb" "levelup-elb" {
   connection_draining_timeout = 400
 
   tags = {
-    Name = "levelup-elb"
+    Name = "lionel-elb"
   }
 }
 
 #Security group for AWS ELB
-resource "aws_security_group" "levelup-elb-securitygroup" {
-  vpc_id      = aws_vpc.levelupvpc.id
-  name        = "levelup-elb-sg"
+resource "aws_security_group" "lionel-elb-securitygroup" {
+  vpc_id      = aws_vpc.lionelvpc.id
+  name        = "lionel-elb-sg"
   description = "security group for Elastic Load Balancer"
   
   egress {
@@ -49,14 +49,14 @@ resource "aws_security_group" "levelup-elb-securitygroup" {
   }
 
   tags = {
-    Name = "levelup-elb-sg"
+    Name = "lionel-elb-sg"
   }
 }
 
 #Security group for the Instances
-resource "aws_security_group" "levelup-instance" {
-  vpc_id      = aws_vpc.levelupvpc.id
-  name        = "levelup-instance"
+resource "aws_security_group" "lionel-instance" {
+  vpc_id      = aws_vpc.lionelvpc.id
+  name        = "lionel-instance"
   description = "security group for instances"
   
   egress {
@@ -77,10 +77,10 @@ resource "aws_security_group" "levelup-instance" {
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
-    security_groups = [aws_security_group.levelup-elb-securitygroup.id]
+    security_groups = [aws_security_group.lionel-elb-securitygroup.id]
   }
 
   tags = {
-    Name = "levelup-instance"
+    Name = "lionel-instance"
   }
 }
