@@ -1,22 +1,22 @@
 #AutoScaling Launch Configuration
-resource "aws_launch_configuration" "levelup-launchconfig" {
-  name_prefix     = "levelup-launchconfig"
+resource "aws_launch_configuration" "lionel-launchconfig" {
+  name_prefix     = "lionel-launchconfig"
   image_id        = lookup(var.AMIS, var.AWS_REGION)
   instance_type   = "t2.micro"
-  key_name        = aws_key_pair.levelup_key.key_name
+  key_name        = aws_key_pair.lionel_key.key_name
 }
 
 #Generate Key
-resource "aws_key_pair" "levelup_key" {
-    key_name = "levelup_key"
+resource "aws_key_pair" "lionel_key" {
+    key_name = "lionel_key"
     public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 
 #Autoscaling Group
-resource "aws_autoscaling_group" "levelup-autoscaling" {
-  name                      = "levelup-autoscaling"
+resource "aws_autoscaling_group" "lionel-autoscaling" {
+  name                      = "lionel-autoscaling"
   vpc_zone_identifier       = ["subnet-9e0ad9f5", "subnet-d7a6afad"]
-  launch_configuration      = aws_launch_configuration.levelup-launchconfig.name
+  launch_configuration      = aws_launch_configuration.lionel-launchconfig.name
   min_size                  = 1
   max_size                  = 2
   health_check_grace_period = 200
@@ -25,15 +25,15 @@ resource "aws_autoscaling_group" "levelup-autoscaling" {
 
   tag {
     key                 = "Name"
-    value               = "LevelUp Custom EC2 instance"
+    value               = "lionel Custom EC2 instance"
     propagate_at_launch = true
   }
 }
 
 #Autoscaling Configuration policy - Scaling Alarm
-resource "aws_autoscaling_policy" "levelup-cpu-policy" {
-  name                   = "levelup-cpu-policy"
-  autoscaling_group_name = aws_autoscaling_group.levelup-autoscaling.name
+resource "aws_autoscaling_policy" "lionel-cpu-policy" {
+  name                   = "lionel-cpu-policy"
+  autoscaling_group_name = aws_autoscaling_group.lionel-autoscaling.name
   adjustment_type        = "ChangeInCapacity"
   scaling_adjustment     = "1"
   cooldown               = "200"
@@ -41,8 +41,8 @@ resource "aws_autoscaling_policy" "levelup-cpu-policy" {
 }
 
 #Auto scaling Cloud Watch Monitoring
-resource "aws_cloudwatch_metric_alarm" "levelup-cpu-alarm" {
-  alarm_name          = "levelup-cpu-alarm"
+resource "aws_cloudwatch_metric_alarm" "lionel-cpu-alarm" {
+  alarm_name          = "lionel-cpu-alarm"
   alarm_description   = "Alarm once CPU Uses Increase"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
@@ -53,17 +53,17 @@ resource "aws_cloudwatch_metric_alarm" "levelup-cpu-alarm" {
   threshold           = "30"
 
   dimensions = {
-    "AutoScalingGroupName" = aws_autoscaling_group.levelup-autoscaling.name
+    "AutoScalingGroupName" = aws_autoscaling_group.lionel-autoscaling.name
   }
 
   actions_enabled = true
-  alarm_actions   = [aws_autoscaling_policy.levelup-cpu-policy.arn]
+  alarm_actions   = [aws_autoscaling_policy.lionel-cpu-policy.arn]
 }
 
 #Auto Descaling Policy
-resource "aws_autoscaling_policy" "levelup-cpu-policy-scaledown" {
-  name                   = "levelup-cpu-policy-scaledown"
-  autoscaling_group_name = aws_autoscaling_group.levelup-autoscaling.name
+resource "aws_autoscaling_policy" "lionel-cpu-policy-scaledown" {
+  name                   = "lionel-cpu-policy-scaledown"
+  autoscaling_group_name = aws_autoscaling_group.lionel-autoscaling.name
   adjustment_type        = "ChangeInCapacity"
   scaling_adjustment     = "-1"
   cooldown               = "200"
@@ -71,8 +71,8 @@ resource "aws_autoscaling_policy" "levelup-cpu-policy-scaledown" {
 }
 
 #Auto descaling cloud watch 
-resource "aws_cloudwatch_metric_alarm" "levelup-cpu-alarm-scaledown" {
-  alarm_name          = "levelup-cpu-alarm-scaledown"
+resource "aws_cloudwatch_metric_alarm" "lionel-cpu-alarm-scaledown" {
+  alarm_name          = "lionel-cpu-alarm-scaledown"
   alarm_description   = "Alarm once CPU Uses Decrease"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "2"
@@ -83,9 +83,9 @@ resource "aws_cloudwatch_metric_alarm" "levelup-cpu-alarm-scaledown" {
   threshold           = "10"
 
   dimensions = {
-    "AutoScalingGroupName" = aws_autoscaling_group.levelup-autoscaling.name
+    "AutoScalingGroupName" = aws_autoscaling_group.lionel-autoscaling.name
   }
 
   actions_enabled = true
-  alarm_actions   = [aws_autoscaling_policy.levelup-cpu-policy-scaledown.arn]
+  alarm_actions   = [aws_autoscaling_policy.lionel-cpu-policy-scaledown.arn]
 }
