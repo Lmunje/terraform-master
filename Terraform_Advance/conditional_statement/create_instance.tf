@@ -8,7 +8,7 @@ module "ec2_cluster" {
     name            = "my-cluster"
     ami             = "ami-08c40ec9ead489470"
     instance_type   = "t2.micro"
-    subnet_id       = "subnet-f30171bf"
+    subnet_id       = "subnet-0447f63b82fdf404d"
     # instance_
     count  = var.environment == "Production" ? 2 : 1
 
