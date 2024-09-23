@@ -1,15 +1,15 @@
 variable "region" {
-  default = "us-east-2"
+  default = "us-east-1"
 }
 
 variable "public_key_path" {
   description = "Public key path"
-  default = "~/.ssh/levelup_key.pub"
+  default = "~/.ssh/lionel_key.pub"
 }
 
 variable "instance_ami" {
   description = "AMI for aws EC2 instance"
-  default = "ami-05692172625678b4e"
+  default = "ami-017613e064089ed77"
 }
 
 variable "instance_type" {
