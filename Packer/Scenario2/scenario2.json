@@ -22,7 +22,7 @@
             },
             "instance_type": "t2.micro",
             "ssh_username": "ubuntu",
-            "ami_name": "scenario1-packer-{{timestamp}}"
+            "ami_name": "scenario2-packer-{{timestamp}}"
         }
     ],
     "provisioners": [

@@ -12,8 +12,8 @@ provider "aws" {
 }
 
 #Resource key pair
-resource "aws_key_pair" "levelup_key" {
-  key_name      = "levelup_key"
+resource "aws_key_pair" "lionel_key" {
+  key_name      = "lionel_key"
   public_key    = file(var.public_key_path)
 }
 
@@ -56,7 +56,7 @@ resource "aws_instance" "my-instance" {
   vpc_security_group_ids = ["${aws_security_group.allow-ssh.id}"]
 
   # the public SSH key
-  key_name = aws_key_pair.levelup_key.key_name
+  key_name = aws_key_pair.lionel_key.key_name
 
   tags = {
     Name         = "instance-${var.ENVIRONMENT}"
