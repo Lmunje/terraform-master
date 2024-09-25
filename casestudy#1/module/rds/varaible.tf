@@ -31,7 +31,7 @@ variable "LIONEL_RDS_ENGINE" {
 
 variable "LIONEL_RDS_ENGINE_VERSION" {
     type = string
-    default = "8.0.20"
+    default = "8.0.39"
 }
 
 variable "DB_INSTANCE_CLASS" {
