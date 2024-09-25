@@ -19,7 +19,7 @@ variable "AMIS" {
 
 variable "AWS_REGION" {
     type        = string
-    default     = "us-east-2"
+    default     = "us-east-1"
 }
 
 variable "ENVIRONMENT" {
@@ -30,7 +30,7 @@ variable "ENVIRONMENT" {
 
 variable "public_key_path" {
   description = "Public key path"
-  default = "~/.ssh/levelup_key.pub"
+  default = "~/.ssh/lionel_key.pub"
 }
 
 variable "vpc_private_subnet1" {

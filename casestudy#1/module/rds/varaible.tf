@@ -1,6 +1,6 @@
 variable "AWS_REGION" {
     type        = string
-    default     = "us-east-2"
+    default     = "us-east-1"
 }
 
 variable "BACKUP_RETENTION_PERIOD" {
@@ -11,25 +11,25 @@ variable "PUBLICLY_ACCESSIBLE" {
     default = "true"
 }
 
-variable "LEVELUP_RDS_USERNAME" {
+variable "LIONEL_RDS_USERNAME" {
     default = "testdb"
 }
 
-variable "LEVELUP_RDS_PASSWORD" {
+variable "LIONEL_RDS_PASSWORD" {
     default = "testdb12345"
 }
 
-variable "LEVELUP_RDS_ALLOCATED_STORAGE" {
+variable "LIONEL_RDS_ALLOCATED_STORAGE" {
     type = string
     default = "20"
 }
 
-variable "LEVELUP_RDS_ENGINE" {
+variable "LIONEL_RDS_ENGINE" {
     type = string
     default = "mysql"
 }
 
-variable "LEVELUP_RDS_ENGINE_VERSION" {
+variable "LIONEL_RDS_ENGINE_VERSION" {
     type = string
     default = "8.0.20"
 }

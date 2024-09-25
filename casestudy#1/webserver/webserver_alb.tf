@@ -1,9 +1,9 @@
-resource "aws_security_group" "levelup_webservers_alb" {
+resource "aws_security_group" "lionel_webservers_alb" {
   tags = {
-    Name = "${var.ENVIRONMENT}-levelup-webservers-ALB"
+    Name = "${var.ENVIRONMENT}-lionel-webservers-ALB"
   }
-  name = "${var.ENVIRONMENT}-levelup-webservers-ALB"
-  description = "Created by levelup"
+  name = "${var.ENVIRONMENT}-lionel-webservers-ALB"
+  description = "Created by lionel"
   vpc_id      = var.vpc_id 
 
   ingress {
