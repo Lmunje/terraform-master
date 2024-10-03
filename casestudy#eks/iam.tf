@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
 }
 
 resource "aws_iam_role" "eks_nodes" {
-  name = "eks-node-group-levelup"
+  name = "eks-node-group-lionel"
 
   assume_role_policy = <<POLICY
 {

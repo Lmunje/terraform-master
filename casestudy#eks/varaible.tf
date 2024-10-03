@@ -1,8 +1,8 @@
 variable "cluster-name" {
-  default = "levelup-tf-eks-demo"
+  default = "lionel-tf-eks-demo"
   type    = string
 }
 
 variable "AWS_REGION" {
-  default = "eu-west-1"
+  default = "us-east-1"
 }
