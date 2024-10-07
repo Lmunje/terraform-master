@@ -1,6 +1,5 @@
-
 resource "aws_key_pair" "lionel_key" {
-    key_name = "lionel_key"
+    key_name   = "lionel_key"
     public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 
@@ -49,19 +48,20 @@ resource "aws_security_group" "allow_elk" {
   }
 }
 
-#Create AWS Instance
+# Create AWS Instance
 resource "aws_instance" "MyFirstInstnace" {
-  ami           = lookup(var.AMIS, var.AWS_REGION)
-  instance_type = "m4.large"
-  availability_zone = "us-east-1a"
-  key_name      = aws_key_pair.lionel_key.key_name
+  ami                  = lookup(var.AMIS, var.AWS_REGION)
+  instance_type       = "m4.large"
+  availability_zone    = "us-east-1a"
+  key_name            = aws_key_pair.lionel_key.key_name
+  subnet_id           = "subnet-008797d78d60b5220"  # Specify your subnet ID here
 
   vpc_security_group_ids = [
     aws_security_group.allow_elk.id,
   ]
 
   depends_on = [aws_security_group.allow_elk]
-  
+
   tags = {
     Name = "custom_instance"
   }
