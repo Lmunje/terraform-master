@@ -1,9 +1,9 @@
 variable "AWS_REGION" {
-default = "ap-south-1"
+default = "us-east-1"
 }
 
 provider "aws" {
-  region     = "ap-south-1"
+  region     = "us-east-1"
 }
 
 variable "AMIS" {
@@ -19,5 +19,5 @@ variable "AMIS" {
 
 variable "PATH_TO_PUBLIC_KEY" {
   description = "Public key path"
-  default = "~/.ssh/levelup_key.pub"
+  default = "~/.ssh/lionel_key.pub"
 }
