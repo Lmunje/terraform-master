@@ -1,6 +1,6 @@
 
-resource "aws_key_pair" "levelup_key" {
-    key_name = "levelup_key"
+resource "aws_key_pair" "lionel_key" {
+    key_name = "lionel_key"
     public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 
@@ -53,8 +53,8 @@ resource "aws_security_group" "allow_elk" {
 resource "aws_instance" "MyFirstInstnace" {
   ami           = lookup(var.AMIS, var.AWS_REGION)
   instance_type = "m4.large"
-  availability_zone = "ap-south-1a"
-  key_name      = aws_key_pair.levelup_key.key_name
+  availability_zone = "us-east-1a"
+  key_name      = aws_key_pair.lionel_key.key_name
 
   vpc_security_group_ids = [
     aws_security_group.allow_elk.id,
