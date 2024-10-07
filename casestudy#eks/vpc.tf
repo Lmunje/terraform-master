@@ -32,10 +32,7 @@ module "vpc" {
   enable_nat_gateway = false
   enable_vpn_gateway = false
 
-  # Ensure Internet Gateway is attached
-  enable_internet_gateway = true
-
-  # Route tables automatically configured for public/private
+  # Tags for Kubernetes, ensuring correct roles for ELB
   public_subnet_tags = {
     "kubernetes.io/role/elb" = "1"
   }
