@@ -1,7 +1,7 @@
 provider "google" {
     credentials = file("service-demo-project-276314-b21400581d00.json")
 
-    project = "service-demo-project-276314"
+    project = "terraform-with-gcp-438621"
     region  = "us-east1"
     zone    = "us-east1-c"
 }
