@@ -1,5 +1,5 @@
 provider "google" {
-    credentials = file("service-demo-project-276314-b21400581d00.json")
+    credentials = file("terraform-with-gcp-438621-b4ead1b290f2.json")
 
     project = "terraform-with-gcp-438621"
     region  = "us-east1"
@@ -13,8 +13,8 @@ resource "google_compute_network" "vpc_network" {
 
 terraform {
   backend "gcs" {
-    bucket  = "levelup360-terraform"
-    prefix  = "terraform-practice"
-    credentials = "service-demo-project-276314-b21400581d00.json"
+    bucket  = "lionel-terraform"
+    prefix  = "lionel-terraform/terraform-sample-practice"
+    credentials = "terraform-with-gcp-438621-b4ead1b290f2.json"
   }
 }
